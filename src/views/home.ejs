@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body style="background-color:<%= locals.color ? color : 'yellow' %>">
+  <h1>Hola!</h1>
+  <form action="/login" method="post">
+    <fieldset>
+      <label for="name">Ingrese su nombre:</label>
+      <input id="name" name="name" type="text">
+    </fieldset>
+    <fieldset>
+      <label for="email">Ingrese su Email:</label>
+      <input id="email" name="email" type="Email">
+    </fieldset>
+    <fieldset>
+      <label for="age">Ingrese su Edad:</label>
+      <input id="age" name="age" type="number">
+    </fieldset>
+    <fieldset>
+      <select name="color" id="color">
+        <option value="red">Red</option>
+        <option value="black">Black</option>
+        <option value="white">White</option>
+      </select>
+    </fieldset>
+    <button type="submit">
+      Enviar
+    </button>
+  </form>
+
+  <% if(locals.errors){ %>
+  <ul>
+    <% errors.forEach(( error )=>{ %>
+    <li> <%= error.msg %> </li>
+    <% }) %>
+  </ul>
+  <% } %>
+
+
+  <% if(locals.user){ %>
+  <p>Hola, soy el usuario <%= user.name %>. Inicie sesión de forma correcta</p>
+  <% } %>
+</body>
+
+</html>
